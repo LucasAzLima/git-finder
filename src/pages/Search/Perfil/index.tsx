@@ -241,8 +241,9 @@ function Perfil() {
       justifyContent="center"
       alignItems="center"
     >
-      <Box className={classes.loader} />
-      <img alt="logo" src={logo} className={classes.loaderImg} />
+      <Box className={classes.loader}>
+        <img alt="logo" src={logo} className={classes.loaderImg} />
+      </Box>
     </Box>
   );
 }
