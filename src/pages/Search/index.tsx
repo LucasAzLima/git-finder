@@ -19,6 +19,13 @@ const Users: React.FC = () => {
 
   const navigate = useNavigation();
   const classes = useStyles();
+
+  function redirect() {
+    if (user === '') {
+      return;
+    }
+    navigate.to(`/user/${user}`);
+  }
   return (
     <Content>
       <Box
@@ -46,8 +53,8 @@ const Users: React.FC = () => {
               defaultValue=""
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" style={{ color: '#f2f2f2' }}>
-                    @
+                  <InputAdornment position="start">
+                    <p style={{ color: '#f2f2f2' }}>@</p>
                   </InputAdornment>
                 ),
               }}
@@ -55,7 +62,7 @@ const Users: React.FC = () => {
             <Button
               color="primary"
               variant="contained"
-              onClick={() => navigate.to(`/user/${user}`)}
+              onClick={() => redirect()}
               className={classes.buttonFilter}
             >
               <SearchOutlined />

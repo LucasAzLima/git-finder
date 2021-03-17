@@ -4,7 +4,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     input: {
       '& .MuiOutlinedInput-root': {
-        height: 70,
+        height: 50,
         color: '#f2f2f2',
         '& fieldset': {
           borderColor: 'transparent',
@@ -50,8 +50,8 @@ const useStyles = makeStyles(() =>
       color: '#f2f2f2',
       background: '#a09e9e',
       borderRadius: '50%',
-      height: '40px !important',
-      width: '40px !important',
+      height: '35px !important',
+      width: '35px !important',
       '&:hover': {
         cursor: 'pointer',
       },
