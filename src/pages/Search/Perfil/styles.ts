@@ -10,12 +10,10 @@ const useStyles = makeStyles(() =>
       minHeight: 100,
       padding: 10,
       animation: '$emerged 1s ease forwards 0.5s',
-      textOverflow: 'ellipsis',
       opacity: 0,
       '& p': {
-        marginTop: 10,
         fontWeight: 'bold',
-        '&:last-item': { marginTop: 0 },
+        textOverflow: 'ellipsis',
       },
       '& a': {
         textDecoration: 'none',
@@ -23,6 +21,9 @@ const useStyles = makeStyles(() =>
         '&:hover': {
           color: '#333',
         },
+      },
+      '& svg': {
+        color: '#474747',
       },
     },
     avatar: {
@@ -40,7 +41,7 @@ const useStyles = makeStyles(() =>
       flexDirection: 'column',
       color: '#f2f2f2',
       fontSize: '1.5rem',
-      height: '40vh',
+      height: '40%',
       marginLeft: '5%',
       marginBottom: 30,
       width: '60%',
@@ -75,7 +76,6 @@ const useStyles = makeStyles(() =>
       width: '100px',
       height: '100px',
       borderRadius: '50%',
-      background: '#f2f2f2',
       position: 'absolute',
       top: '50%',
       left: '50%',
