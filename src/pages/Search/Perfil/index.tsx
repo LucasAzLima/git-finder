@@ -8,6 +8,9 @@ import {
   Room,
   Group,
   KeyboardBackspace,
+  Stars,
+  Book,
+  Language,
 } from '@material-ui/icons';
 import useStyles from './styles';
 
@@ -38,18 +41,10 @@ interface userProfileRequest {
   twitter_username?: string;
 }
 
-interface error {
-  data: {
-    documentation_url: string;
-    message: string;
-  };
-  status: number;
-}
-
 function Perfil() {
   const [userRepositories, setUserRepositories] = useState<userRepoRequest[]>();
   const [userProfile, setUserProfile] = useState<userProfileRequest>();
-  const [erro, setErro] = useState<error>();
+  const [erro, setErro] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const params = useParams<{ user: string }>();
   const classes = useStyles();
@@ -63,11 +58,9 @@ function Perfil() {
           setUserProfile(response.data);
           getRepo();
         })
-        .catch(function (error) {
-          if (error.response) {
-            setErro(error.response);
-            setLoading(false);
-          }
+        .catch(() => {
+          setErro(true);
+          setLoading(false);
         });
     }
     async function getRepo() {
@@ -80,21 +73,18 @@ function Perfil() {
             if (a.stargazers_count < b.stargazers_count) return 1;
             return 0;
           });
-          console.log(data);
           setUserRepositories(data);
           setLoading(false);
         })
-        .catch(function (error) {
-          if (error.response) {
-            setErro(error.response);
-            setLoading(false);
-          }
+        .catch(() => {
+          setErro(true);
+          setLoading(false);
         });
     }
     get();
   }, []);
   return !loading ? (
-    userRepositories && userProfile ? (
+    userRepositories && userProfile && !erro ? (
       <Box width="100%">
         <img src={userProfile?.avatar_url} className={classes.avatar} />
         <Box className={classes.back} onClick={() => navigate.to('/')}>
@@ -130,40 +120,80 @@ function Perfil() {
         >
           Repositórios:
         </Typography>
-        <Box className={classes.repos}>
-          <Box paddingRight="5%">
-            {userRepositories?.map((repo, i) => {
-              if (i % 2 === 1) return null;
-              return (
-                <Box key={i} className={classes.box}>
-                  <p title={repo.name}>
-                    <a target="_blank" rel="noreferrer" href={repo.html_url}>
-                      {repo.name}
-                    </a>
-                  </p>
-                  <p title={repo.language}>{repo.language}</p>
-                  <p>{repo.stargazers_count} Stars</p>
-                </Box>
-              );
-            })}
+        {userRepositories.length > 0 ? (
+          <Box className={classes.repos}>
+            <Box width="45%" paddingRight="5%">
+              {userRepositories?.map((repo, i) => {
+                if (i % 2 === 0) return null;
+                return (
+                  <Box key={i} className={classes.box}>
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Book style={{ marginRight: 10 }} />
+                      <p title={repo.name}>
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          href={repo.html_url}
+                        >
+                          {repo.name}
+                        </a>
+                      </p>
+                    </Box>
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Language style={{ marginRight: 10 }} />
+                      <p title={repo.language}>
+                        {repo.language === null ? '-' : repo.language}
+                      </p>
+                    </Box>
+
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Stars style={{ marginRight: 10 }} />
+                      <p>{repo.stargazers_count} Stars</p>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+            <Box width="45%">
+              {userRepositories?.map((repo, i) => {
+                if (i % 2 === 1) return null;
+                return (
+                  <Box key={i} className={classes.box}>
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Book style={{ marginRight: 10 }} />
+                      <p title={repo.name}>
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          href={repo.html_url}
+                        >
+                          {repo.name}
+                        </a>
+                      </p>
+                    </Box>
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Language style={{ marginRight: 10 }} />
+                      <p title={repo.language}>
+                        {repo.language === null ? '-' : repo.language}
+                      </p>
+                    </Box>
+
+                    <Box display="flex" alignItems="center" marginTop="10px">
+                      <Stars style={{ marginRight: 10 }} />
+                      <p>{repo.stargazers_count} Stars</p>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
-          <Box>
-            {userRepositories?.map((repo, i) => {
-              if (i % 2 === 0) return null;
-              return (
-                <Box key={i} className={classes.box}>
-                  <p title={repo.name}>
-                    <a target="_blank" rel="noreferrer" href={repo.html_url}>
-                      {repo.name}
-                    </a>
-                  </p>
-                  <p title={repo.language}>{repo.language}</p>
-                  <p>{repo.stargazers_count} Stars</p>
-                </Box>
-              );
-            })}
+        ) : (
+          <Box className={classes.repos}>
+            <Typography variant="h5" style={{ fontWeight: 'bold' }}>
+              Sem repositórios cadastrados
+            </Typography>
           </Box>
-        </Box>
+        )}
       </Box>
     ) : (
       <Box
