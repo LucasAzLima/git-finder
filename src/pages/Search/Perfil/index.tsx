@@ -20,6 +20,7 @@ interface userRepoRequest {
   name?: string;
   language?: string;
   homepage?: string;
+  stargazers_count: number;
 }
 
 interface userProfileRequest {
@@ -73,8 +74,14 @@ function Perfil() {
       await axios
         .get(`https://api.github.com/users/${params.user}/repos`)
         .then((response) => {
-          setUserRepositories(response.data);
-          console.log(response.data);
+          const data: userRepoRequest[] = response.data;
+          data.sort((a, b) => {
+            if (a.stargazers_count > b.stargazers_count) return -1;
+            if (a.stargazers_count < b.stargazers_count) return 1;
+            return 0;
+          });
+          console.log(data);
+          setUserRepositories(data);
           setLoading(false);
         })
         .catch(function (error) {
@@ -123,44 +130,35 @@ function Perfil() {
         >
           Repositórios:
         </Typography>
-        <Box
-          display="flex"
-          flexDirection="row"
-          marginLeft="5%"
-          marginBottom="5%"
-        >
-          <Box width="30%" paddingRight="5%">
+        <Box className={classes.repos}>
+          <Box paddingRight="5%">
             {userRepositories?.map((repo, i) => {
               if (i % 2 === 1) return null;
               return (
                 <Box key={i} className={classes.box}>
-                  <p>
+                  <p title={repo.name}>
                     <a target="_blank" rel="noreferrer" href={repo.html_url}>
                       {repo.name}
                     </a>
                   </p>
-                  <p>{repo.language}</p>
-                  <p>
-                    <a target="_blank" rel="noreferrer" href={repo.homepage}>
-                      {repo.homepage}
-                    </a>
-                  </p>
+                  <p title={repo.language}>{repo.language}</p>
+                  <p>{repo.stargazers_count} Stars</p>
                 </Box>
               );
             })}
           </Box>
-          <Box width="30%">
+          <Box>
             {userRepositories?.map((repo, i) => {
               if (i % 2 === 0) return null;
               return (
                 <Box key={i} className={classes.box}>
-                  <p>
+                  <p title={repo.name}>
                     <a target="_blank" rel="noreferrer" href={repo.html_url}>
                       {repo.name}
                     </a>
                   </p>
-                  <p>{repo.language}</p>
-                  <p>{repo.homepage}</p>
+                  <p title={repo.language}>{repo.language}</p>
+                  <p>{repo.stargazers_count} Stars</p>
                 </Box>
               );
             })}

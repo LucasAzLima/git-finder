@@ -10,10 +10,12 @@ const useStyles = makeStyles(() =>
       minHeight: 100,
       padding: 10,
       animation: '$emerged 1s ease forwards 0.5s',
+      textOverflow: 'ellipsis',
       opacity: 0,
       '& p': {
         marginTop: 10,
         fontWeight: 'bold',
+        '&:last-item': { marginTop: 0 },
       },
       '& a': {
         textDecoration: 'none',
@@ -41,6 +43,7 @@ const useStyles = makeStyles(() =>
       height: '40vh',
       marginLeft: '5%',
       marginBottom: 30,
+      width: '60%',
       marginTop: 100,
       justifyContent: 'center',
       '& svg': {
@@ -78,6 +81,28 @@ const useStyles = makeStyles(() =>
       left: '50%',
       transform: 'translate(-50%, -50%)',
       content: '""',
+    },
+    repos: {
+      display: 'flex',
+      flexDirection: 'row',
+      marginLeft: '5%',
+      marginBottom: '5%',
+      maxHeight: 400,
+      width: '60%',
+      overflow: 'auto',
+      '&::-webkit-scrollbar': {
+        width: '10px',
+      },
+      '&::-webkit-scrollbar-track': {
+        background: '#f1f1f1',
+      },
+
+      '&::-webkit-scrollbar-thumb': {
+        background: '#888',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+        background: '#555',
+      },
     },
     '@keyframes emerged': {
       '100%': {

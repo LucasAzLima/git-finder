@@ -34,6 +34,10 @@ const useStyles = makeStyles(() =>
       height: 50,
       width: 0,
       animation: '$animSearch 1.5s ease forwards',
+      '& p': {
+        wordWrap: 'break-word',
+        textOverflow: 'ellipsis',
+      },
     },
     textCenter: {
       fontSize: '3rem',

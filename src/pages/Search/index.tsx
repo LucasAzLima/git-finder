@@ -14,7 +14,7 @@ import useNavigation from 'hooks/navigation';
 import Octocat from 'assets/img/Octocat.png';
 
 const Users: React.FC = () => {
-  const [user, setUser] = useState<string>('lucasazlima');
+  const [user, setUser] = useState<string>('');
   const [hidden, setHidden] = useState<boolean>(true);
 
   const navigate = useNavigation();
@@ -35,7 +35,7 @@ const Users: React.FC = () => {
           alignItems="center"
           justifyContent="flex-end"
           minHeight="72px"
-          marginRight="10%"
+          marginRight="5%"
         >
           <Box className={classes.box} display={hidden ? 'none' : 'flex'}>
             <TextField
@@ -43,7 +43,7 @@ const Users: React.FC = () => {
               onChange={(event) => setUser(event.target.value)}
               variant="outlined"
               className={classes.input}
-              defaultValue="lucasazlima"
+              defaultValue=""
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start" style={{ color: '#f2f2f2' }}>
