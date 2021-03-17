@@ -7,4 +7,10 @@ export const Colors = {
     secondary: '#F5F5F5',
     hover: 'rgba(14, 75, 130, 0.12)',
   },
+  foreground: {
+    primary: '#0E4B82',
+    primaryBlack: '#333333',
+    secondaryLight: '#DBDBDB',
+    hover: '#0E4B82',
+  },
 };
