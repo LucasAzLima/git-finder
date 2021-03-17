@@ -90,7 +90,7 @@ const Users: React.FC = () => {
         <Typography variant="h1" className={classes.textCenter}>
           Pesquise e obtenha informações sobre seu perfil!
         </Typography>
-        <img src={Octocat} style={{ width: '40%' }} />
+        <img src={Octocat} style={{ width: '40%' }} alt="octocat" />
       </Box>
     </Content>
   );

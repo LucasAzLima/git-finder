@@ -82,11 +82,15 @@ function Perfil() {
         });
     }
     get();
-  }, []);
+  }, [params.user]);
   return !loading ? (
     userRepositories && userProfile && !erro ? (
       <Box width="100%">
-        <img src={userProfile?.avatar_url} className={classes.avatar} />
+        <img
+          alt="avatar"
+          src={userProfile?.avatar_url}
+          className={classes.avatar}
+        />
         <Box className={classes.back} onClick={() => navigate.to('/')}>
           <KeyboardBackspace style={{ marginRight: 10 }} /> Voltar
         </Box>
@@ -132,7 +136,7 @@ function Perfil() {
                       <p title={repo.name}>
                         <a
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           href={repo.html_url}
                         >
                           {repo.name}
@@ -164,7 +168,7 @@ function Perfil() {
                       <p title={repo.name}>
                         <a
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           href={repo.html_url}
                         >
                           {repo.name}
@@ -226,7 +230,7 @@ function Perfil() {
             Não encontramos algum perfil com esse usuário!
           </Typography>
         </Box>
-        <img src={notFound} style={{ height: '60vh' }} />
+        <img alt="not found" src={notFound} style={{ height: '60vh' }} />
       </Box>
     )
   ) : (
@@ -238,7 +242,7 @@ function Perfil() {
       alignItems="center"
     >
       <Box className={classes.loader} />
-      <img src={logo} className={classes.loaderImg} />
+      <img alt="logo" src={logo} className={classes.loaderImg} />
     </Box>
   );
 }
