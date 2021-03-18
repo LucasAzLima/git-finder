@@ -14,9 +14,9 @@ import {
 } from '@material-ui/icons';
 import useStyles from './styles';
 
-import notFound from 'assets/img/not-found.svg';
-import logo from 'assets/img/github.svg';
 import useNavigation from 'hooks/navigation';
+import Error from 'pages/Error';
+import Loading from 'components/loading';
 
 interface userRepoRequest {
   html_url?: string;
@@ -46,9 +46,11 @@ function Perfil() {
   const [userProfile, setUserProfile] = useState<userProfileRequest>();
   const [erro, setErro] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+
   const params = useParams<{ user: string }>();
   const classes = useStyles();
   const navigate = useNavigation();
+
   useEffect(() => {
     async function get() {
       setLoading(true);
@@ -83,6 +85,7 @@ function Perfil() {
     }
     get();
   }, [params.user]);
+
   return !loading ? (
     userRepositories && userProfile && !erro ? (
       <Box width="100%">
@@ -95,24 +98,24 @@ function Perfil() {
           <KeyboardBackspace style={{ marginRight: 10 }} /> Voltar
         </Box>
         <Box className={classes.infos}>
-          <Box display="flex" alignItems="center" marginTop="10px">
+          <Box className={classes.textBox}>
             <AccountCircleOutlined style={{ marginRight: 10 }} />
             <p>{userProfile?.name}</p>
           </Box>
-          <Box display="flex" alignItems="center" marginTop="10px">
+          <Box className={classes.textBox}>
             <Description style={{ marginRight: 10 }} />
             <p>{userProfile?.bio}</p>
           </Box>
-          <Box display="flex" alignItems="center" marginTop="10px">
+          <Box className={classes.textBox}>
             <Room style={{ marginRight: 10 }} />
             <p>{userProfile?.location}</p>
           </Box>
-          <Box display="flex" alignItems="center" marginTop="10px">
+          <Box className={classes.textBox}>
             <Group style={{ marginRight: 10 }} />
             <p style={{ marginRight: 10 }}>{userProfile?.followers}</p>
             followers
           </Box>
-          <Box display="flex" alignItems="center" marginTop="10px">
+          <Box className={classes.textBox}>
             <Group style={{ marginRight: 10 }} />
             <p style={{ marginRight: 10 }}>{userProfile?.following}</p>
             following
@@ -131,7 +134,7 @@ function Perfil() {
                 if (i % 2 === 0) return null;
                 return (
                   <Box key={i} className={classes.box}>
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Book style={{ marginRight: 10 }} />
                       <p title={repo.name}>
                         <a
@@ -143,14 +146,14 @@ function Perfil() {
                         </a>
                       </p>
                     </Box>
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Language style={{ marginRight: 10 }} />
                       <p title={repo.language}>
                         {repo.language === null ? '-' : repo.language}
                       </p>
                     </Box>
 
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Stars style={{ marginRight: 10 }} />
                       <p>{repo.stargazers_count} Stars</p>
                     </Box>
@@ -163,7 +166,7 @@ function Perfil() {
                 if (i % 2 === 1) return null;
                 return (
                   <Box key={i} className={classes.box}>
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Book style={{ marginRight: 10 }} />
                       <p title={repo.name}>
                         <a
@@ -175,14 +178,14 @@ function Perfil() {
                         </a>
                       </p>
                     </Box>
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Language style={{ marginRight: 10 }} />
                       <p title={repo.language}>
                         {repo.language === null ? '-' : repo.language}
                       </p>
                     </Box>
 
-                    <Box display="flex" alignItems="center" marginTop="10px">
+                    <Box className={classes.textBox}>
                       <Stars style={{ marginRight: 10 }} />
                       <p>{repo.stargazers_count} Stars</p>
                     </Box>
@@ -200,51 +203,10 @@ function Perfil() {
         )}
       </Box>
     ) : (
-      <Box
-        display="flex"
-        width="100%"
-        height="100vh"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box className={classes.back} onClick={() => navigate.to('/')}>
-          <KeyboardBackspace style={{ marginRight: 10 }} /> Voltar
-        </Box>
-        <Box>
-          <Typography
-            variant="h2"
-            style={{
-              fontWeight: 'bold',
-              marginLeft: '5%',
-              color: '#a09e9e',
-              fontSize: '4rem',
-            }}
-          >
-            Opssss!
-          </Typography>
-
-          <Typography
-            variant="h2"
-            style={{ fontWeight: 'bold', marginLeft: '5%', color: '#a09e9e' }}
-          >
-            Não encontramos algum perfil com esse usuário!
-          </Typography>
-        </Box>
-        <img alt="not found" src={notFound} style={{ height: '60vh' }} />
-      </Box>
+      <Error />
     )
   ) : (
-    <Box
-      display="flex"
-      width="100%"
-      height="100vh"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Box className={classes.loader}>
-        <img alt="logo" src={logo} className={classes.loaderImg} />
-      </Box>
-    </Box>
+    <Loading />
   );
 }
 

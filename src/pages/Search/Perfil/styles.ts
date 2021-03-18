@@ -26,6 +26,27 @@ const useStyles = makeStyles(() =>
         color: '#474747',
       },
     },
+
+    back: {
+      position: 'absolute',
+      display: 'flex',
+      left: 20,
+      top: 50,
+      content: '""',
+      color: '#f2f2f2',
+      alignItems: 'center',
+      fontWeight: 'bold',
+      '&:hover': {
+        cursor: 'pointer',
+      },
+    },
+
+    textBox: {
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: '10px',
+    },
+
     avatar: {
       position: 'absolute',
       right: 0,
@@ -36,6 +57,7 @@ const useStyles = makeStyles(() =>
       justifySelf: 'flex-end',
       maskImage: 'linear-gradient(to bottom, #222222,transparent)',
     },
+
     infos: {
       display: 'flex',
       flexDirection: 'column',
@@ -51,37 +73,7 @@ const useStyles = makeStyles(() =>
         color: '#a09e9e',
       },
     },
-    back: {
-      position: 'absolute',
-      display: 'flex',
-      left: 20,
-      top: 50,
-      content: '""',
-      color: '#f2f2f2',
-      alignItems: 'center',
-      fontWeight: 'bold',
-      '&:hover': {
-        cursor: 'pointer',
-      },
-    },
-    loader: {
-      width: '200px',
-      height: '200px',
-      borderRadius: '50%',
-      border: '16px solid #a09e9e',
-      borderTop: '16px solid #f2f2f2',
-      animation: '$spin 2s linear infinite',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    loaderImg: {
-      width: '100px',
-      height: '100px',
-      borderRadius: '50%',
-      animation: '$spinInv 2s linear infinite',
-      content: '""',
-    },
+
     repos: {
       display: 'flex',
       flexDirection: 'row',
@@ -96,7 +88,6 @@ const useStyles = makeStyles(() =>
       '&::-webkit-scrollbar-track': {
         background: '#f1f1f1',
       },
-
       '&::-webkit-scrollbar-thumb': {
         background: '#888',
       },
@@ -104,25 +95,10 @@ const useStyles = makeStyles(() =>
         background: '#555',
       },
     },
+
     '@keyframes emerged': {
       '100%': {
         opacity: 1,
-      },
-    },
-    '@keyframes spin': {
-      '0%': {
-        transform: 'rotate(0deg)',
-      },
-      '100%': {
-        transform: 'rotate(360deg)',
-      },
-    },
-    '@keyframes spinInv': {
-      '0%': {
-        transform: 'rotate(0deg)',
-      },
-      '100%': {
-        transform: 'rotate(-360deg)',
       },
     },
   })

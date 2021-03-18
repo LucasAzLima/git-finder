@@ -24,7 +24,8 @@ const Users: React.FC = () => {
     if (user === '') {
       return;
     }
-    navigate.to(`/user/${user}`);
+    const userVerify = user[0] === '@' ? user.substr(1, user.length) : user;
+    navigate.to(`/user/${userVerify}`);
   }
   return (
     <Content>
