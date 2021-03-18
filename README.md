@@ -58,5 +58,4 @@ Ao iniciar basta clicar na lupa que aparecerá acima do octocat, onde será poss
 - Número de serguidores e número de pessoas que ele segue
 - Repositórios
 
-
-<br />
+---
