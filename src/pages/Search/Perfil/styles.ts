@@ -72,6 +72,9 @@ const useStyles = makeStyles(() =>
       '& svg': {
         color: '#a09e9e',
       },
+      '@media (max-width: 400px)': {
+        width: '100%',
+      },
     },
 
     repos: {
