@@ -22,10 +22,18 @@ const useStyles = makeStyles(() =>
       justifyContent: 'space-between',
       marginTop: '20px',
       alignItems: 'center',
+      '& img': {
+        width: '40%',
+      },
       '@media (max-width: 400px)': {
         flexDirection: 'column',
+        justifyContent: 'center',
+        '& img': {
+          width: '100%',
+        },
       },
     },
+
     header: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -72,6 +80,13 @@ const useStyles = makeStyles(() =>
       width: '35px !important',
       '&:hover': {
         cursor: 'pointer',
+      },
+    },
+    git: {
+      textDecoration: 'none',
+      color: '#f2f2f2',
+      '&:hover': {
+        color: '#a09e9e',
       },
     },
     '@keyframes anim': {

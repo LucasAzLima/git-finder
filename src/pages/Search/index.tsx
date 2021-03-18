@@ -31,7 +31,15 @@ const Users: React.FC = () => {
     <Content>
       <Box className={classes.header}>
         <Typography variant="h1" style={{ fontWeight: 'bold' }}>
-          GitHub Finder
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.git}
+          >
+            GitHub
+          </a>{' '}
+          Finder
         </Typography>
         <Box
           display="flex"
@@ -81,7 +89,7 @@ const Users: React.FC = () => {
         <Typography variant="h1" className={classes.textCenter}>
           Pesquise e obtenha informações sobre seu perfil!
         </Typography>
-        <img src={Octocat} style={{ width: '40%' }} alt="octocat" />
+        <img src={Octocat} alt="octocat" />
       </Box>
     </Content>
   );
