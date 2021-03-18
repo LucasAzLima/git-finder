@@ -10,13 +10,7 @@ const Error: React.FC = () => {
   const classes = useStyles();
   const navigate = useNavigation();
   return (
-    <Box
-      display="flex"
-      width="100%"
-      height="100vh"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Box className={classes.box}>
       <Box className={classes.back} onClick={() => navigate.to('/')}>
         <KeyboardBackspace style={{ marginRight: 10 }} /> Voltar
       </Box>
@@ -58,6 +52,17 @@ const useStyles = makeStyles(() =>
       fontWeight: 'bold',
       '&:hover': {
         cursor: 'pointer',
+      },
+    },
+    box: {
+      display: 'flex',
+      width: '100%',
+      height: '100vh',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+      '@media (max-width: 400px)': {
+        flexDirection: 'column',
       },
     },
   })

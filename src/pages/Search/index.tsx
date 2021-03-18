@@ -29,12 +29,7 @@ const Users: React.FC = () => {
   }
   return (
     <Content>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        margin="10px 20px 0px 20px"
-        alignItems="center"
-      >
+      <Box className={classes.header}>
         <Typography variant="h1" style={{ fontWeight: 'bold' }}>
           GitHub Finder
         </Typography>
@@ -82,12 +77,7 @@ const Users: React.FC = () => {
           )}
         </Box>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        marginTop="20px"
-        alignItems="center"
-      >
+      <Box className={classes.content}>
         <Typography variant="h1" className={classes.textCenter}>
           Pesquise e obtenha informações sobre seu perfil!
         </Typography>

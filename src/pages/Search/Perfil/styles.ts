@@ -82,6 +82,9 @@ const useStyles = makeStyles(() =>
       maxHeight: 400,
       width: '60%',
       overflow: 'auto',
+      '@media (max-width: 400px)': {
+        width: '100%',
+      },
       '&::-webkit-scrollbar': {
         width: '10px',
       },

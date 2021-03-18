@@ -17,6 +17,24 @@ const useStyles = makeStyles(() =>
         },
       },
     },
+    content: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: '20px',
+      alignItems: 'center',
+      '@media (max-width: 400px)': {
+        flexDirection: 'column',
+      },
+    },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      margin: '10px 20px 0px 20px',
+      alignItems: 'center',
+      '@media (max-width: 400px)': {
+        flexDirection: 'column',
+      },
+    },
     buttonFilter: {
       borderRadius: '0px 10px 10px 0px',
       width: 0,
