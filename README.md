@@ -42,7 +42,7 @@ Para visualisar o projeto em execução, use o comando:
 yarn start
 ```
 
-Após executar, os componentes exemplo estarão disponíveis no endereço `http://localhost:3000` onde é possível utiliza-los isoladamente.
+Após executar, os componentes exemplo estarão disponíveis no endereço `http://localhost:3000` onde é possível usar o projeto.
 
 <br />
 
