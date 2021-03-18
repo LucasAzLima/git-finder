@@ -98,28 +98,38 @@ function Perfil() {
           <KeyboardBackspace style={{ marginRight: 10 }} /> Voltar
         </Box>
         <Box className={classes.infos}>
-          <Box className={classes.textBox}>
-            <AccountCircleOutlined style={{ marginRight: 10 }} />
-            <p>{userProfile?.name}</p>
-          </Box>
-          <Box className={classes.textBox}>
-            <Description style={{ marginRight: 10 }} />
-            <p>{userProfile?.bio}</p>
-          </Box>
-          <Box className={classes.textBox}>
-            <Room style={{ marginRight: 10 }} />
-            <p>{userProfile?.location}</p>
-          </Box>
-          <Box className={classes.textBox}>
-            <Group style={{ marginRight: 10 }} />
-            <p style={{ marginRight: 10 }}>{userProfile?.followers}</p>
-            followers
-          </Box>
-          <Box className={classes.textBox}>
-            <Group style={{ marginRight: 10 }} />
-            <p style={{ marginRight: 10 }}>{userProfile?.following}</p>
-            following
-          </Box>
+          {userProfile?.name && (
+            <Box className={classes.textBox}>
+              <AccountCircleOutlined style={{ marginRight: 10 }} />
+              <p>{userProfile?.name}</p>
+            </Box>
+          )}
+          {userProfile?.bio && (
+            <Box className={classes.textBox}>
+              <Description style={{ marginRight: 10 }} />
+              <p>{userProfile?.bio}</p>
+            </Box>
+          )}
+          {userProfile?.location && (
+            <Box className={classes.textBox}>
+              <Room style={{ marginRight: 10 }} />
+              <p>{userProfile?.location}</p>
+            </Box>
+          )}
+          {userProfile?.followers && (
+            <Box className={classes.textBox}>
+              <Group style={{ marginRight: 10 }} />
+              <p style={{ marginRight: 10 }}>{userProfile?.followers}</p>
+              followers
+            </Box>
+          )}
+          {userProfile?.following && (
+            <Box className={classes.textBox}>
+              <Group style={{ marginRight: 10 }} />
+              <p style={{ marginRight: 10 }}>{userProfile?.following}</p>
+              following
+            </Box>
+          )}
         </Box>
         <Typography
           variant="h2"
