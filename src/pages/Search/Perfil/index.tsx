@@ -8,15 +8,13 @@ import {
   Room,
   Group,
   KeyboardBackspace,
-  Stars,
-  Book,
-  Language,
 } from '@material-ui/icons';
 import useStyles from './styles';
 
 import useNavigation from 'hooks/navigation';
 import Error from 'pages/Error';
 import Loading from 'components/loading';
+import Card from 'components/Card';
 
 interface userRepoRequest {
   html_url?: string;
@@ -142,65 +140,13 @@ function Perfil() {
             <Box width="45%" paddingRight="5%">
               {userRepositories?.map((repo, i) => {
                 if (i % 2 === 0) return null;
-                return (
-                  <Box key={i} className={classes.box}>
-                    <Box className={classes.textBox}>
-                      <Book style={{ marginRight: 10 }} />
-                      <p title={repo.name}>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={repo.html_url}
-                        >
-                          {repo.name}
-                        </a>
-                      </p>
-                    </Box>
-                    <Box className={classes.textBox}>
-                      <Language style={{ marginRight: 10 }} />
-                      <p title={repo.language}>
-                        {repo.language === null ? '-' : repo.language}
-                      </p>
-                    </Box>
-
-                    <Box className={classes.textBox}>
-                      <Stars style={{ marginRight: 10 }} />
-                      <p>{repo.stargazers_count} Stars</p>
-                    </Box>
-                  </Box>
-                );
+                return <Card repositorie={repo} key={i} />;
               })}
             </Box>
             <Box width="45%">
               {userRepositories?.map((repo, i) => {
                 if (i % 2 === 1) return null;
-                return (
-                  <Box key={i} className={classes.box}>
-                    <Box className={classes.textBox}>
-                      <Book style={{ marginRight: 10 }} />
-                      <p title={repo.name}>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={repo.html_url}
-                        >
-                          {repo.name}
-                        </a>
-                      </p>
-                    </Box>
-                    <Box className={classes.textBox}>
-                      <Language style={{ marginRight: 10 }} />
-                      <p title={repo.language}>
-                        {repo.language === null ? '-' : repo.language}
-                      </p>
-                    </Box>
-
-                    <Box className={classes.textBox}>
-                      <Stars style={{ marginRight: 10 }} />
-                      <p>{repo.stargazers_count} Stars</p>
-                    </Box>
-                  </Box>
-                );
+                return <Card repositorie={repo} key={i} />;
               })}
             </Box>
           </Box>
